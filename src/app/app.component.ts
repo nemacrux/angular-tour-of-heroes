@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Hero } from './hero';
 
 const HEROES: Hero[] = [
   { id: 11, name: 'Mr. Nice' },
@@ -13,18 +14,13 @@ const HEROES: Hero[] = [
   { id: 20, name: 'Tornado' }
 ];
 
-export class Hero {
-  id: number;
-  name: string;
-}
-
 @Component({
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
     <h2>My Heroes</h2>
       <ul class="heroes">
-      
+
         <!-- The (*) prefix to ngFor indicates that the <li> element and its children 
         constitute a master template. For the event binding: The parenthesis identify 
         the <li> element’s click event as the target -->
@@ -35,19 +31,11 @@ export class Hero {
           <span class="badge">{{hero.id}}</span> {{hero.name}}
         </li>
       </ul>
-    
-    <!-- ngIf and ngFor are called “structural directives” because they can change the 
-    structure of portions of the DOM. -->
 
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <!-- ngModel built-in directive for two-way binding -->
-        <input [(ngModel)]="selectedHero.name" placeholder="name">
-      </div>
-    <div>
+      <!-- Notice that the hero property is the target of a property binding — 
+      it's in square brackets to the left of the (=).-->
+
+      <my-hero-detail [hero]="selectedHero"></my-hero-detail>      
     `,
   styles: [`
     .selected {
