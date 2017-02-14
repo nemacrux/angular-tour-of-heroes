@@ -1,5 +1,5 @@
 .idea
-./app
+/app/
 node_modules
 jspm_packages
 npm-debug.log
