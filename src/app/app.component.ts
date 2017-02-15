@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { Hero } from './hero';
+import { HeroService } from './hero.service';
 
 @Component({
   selector: 'my-app',
@@ -72,17 +74,34 @@ import { Hero } from './hero';
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-`]
+  `],
 
+  // let angular to inject a new instance of HeroService
+  providers: [HeroService]
 })
 
-export class AppComponent {
+// if we implement the Angular ngOnInit Lifecycle Hook, then Angular
+// is going to call the method ngOnInit at the appropiate time
+export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
   // ts infers the type from the array
   heroes : Hero[];
   selectedHero: Hero;
 
+  // the constructor defines a private property where the instace
+  // of HeroService will be injected
+  constructor(private heroService: HeroService) { }
+
+  // this method is called by Angular
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
-  } 
+  }
+
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
 }
