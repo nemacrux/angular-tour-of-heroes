@@ -36,7 +36,7 @@ import { HeroService }          from './hero.service';
         component: DashboardComponent
       },
       {
-        path: 'hero-detail',
+        path: 'detail/:id',
         component: HeroDetailComponent
       }
     ])
