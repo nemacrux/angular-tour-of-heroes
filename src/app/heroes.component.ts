@@ -76,7 +76,6 @@ import { HeroService }  from './hero.service';
     }
   `],
  })
-
 // if we implement the Angular ngOnInit Lifecycle Hook, then Angular
 // is going to call the method ngOnInit at the appropiate time
 export class HeroesComponent implements OnInit {
@@ -98,7 +97,7 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    //this.heroService.getHeroes().then(heroes => this.heroes = heroes);
-    this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    //this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
   }
 }
