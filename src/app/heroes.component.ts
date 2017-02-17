@@ -21,10 +21,11 @@ import { HeroService }  from './hero.service';
         </li>
       </ul>
 
-      <!-- Notice that the hero property is the target of a property binding — 
-      it's in square brackets to the left of the (=).-->
-
-      <my-hero-detail [hero]="selectedHero"></my-hero-detail>      
+      <div *ngIf="selectedHero">
+        <h2>
+          {{selectedHero.name | uppercase }} is my hero
+        </h2>
+        <button (click)="gotoDetail()">View Details</button>
     `,
   styles: [`
     .selected {
