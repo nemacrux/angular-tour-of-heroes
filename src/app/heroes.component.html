@@ -1,4 +1,11 @@
 <h2>My Heroes</h2>
+<div>
+    <label>Hero name:</label> <input #heroName />
+    <button (click)="add(heroName.value); heroName.value=''">
+        add
+    </button>
+</div>
+
 <ul class="heroes">
 
     <!-- The (*) prefix to ngFor indicates that the <li> element and its children 
