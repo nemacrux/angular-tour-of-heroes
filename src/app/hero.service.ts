@@ -1,12 +1,29 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http }       from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 import { Hero }   from './hero'
-import { HEROES } from './mock-heroes' 
+//import { HEROES } from './mock-heroes' 
 
 @Injectable()
 export class HeroService {
+
+  // URL to web api
+  private heroesUrl = 'api/heroes';
+
+  constructor(private http: Http){}
+
   getHeroes(): Promise<Hero[]> {
-    return Promise.resolve(HEROES);
+    return this.http.get(this.heroesUrl)
+               .toPromise()
+               .then(response => response.json().data as Hero[])
+               .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error ocurred', error); // for demo purpose only
+    return Promise.reject(error.message || error)
   }
 
   // simulate server latency with 2 secs delay
