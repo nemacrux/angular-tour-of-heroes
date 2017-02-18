@@ -14,8 +14,8 @@ import { AppComponent }         from './app.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroesComponent }      from './heroes.component';
 import { DashboardComponent }   from './dashboard.component'
+import { HeroSearchComponent }  from './hero-search.component';
 import { HeroService }          from './hero.service';
-
 
 @NgModule({
   // external modules used by the app
@@ -36,7 +36,8 @@ import { HeroService }          from './hero.service';
     AppComponent,
     HeroDetailComponent,
     HeroesComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeroSearchComponent
   ],
   bootstrap: [ AppComponent ],
   /* let angular to inject an instance of HeroService. It's a singleton instance
